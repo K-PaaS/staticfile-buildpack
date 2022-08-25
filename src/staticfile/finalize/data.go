@@ -72,6 +72,8 @@ http {
   keepalive_timeout 30;
   port_in_redirect off; # Ensure that redirects don't include the internal container PORT - <%= ENV["PORT"] %>
   server_tokens off;
+  disable_symlinks on;
+  client_max_body_size 10M;
 
   map $http_x_forwarded_host $best_host {
     "~^([^,]+),?.*$" $1;
